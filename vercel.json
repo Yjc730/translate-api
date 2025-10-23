@@ -1,8 +1,5 @@
 {
   "builds": [
-    {
-      "src": "api/translate.js",
-      "use": "@vercel/node"
-    }
+    { "src": "api/translate.js", "use": "@vercel/node" }
   ]
 }
