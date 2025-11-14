@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     const { text } = req.body || {};
     if (!text || typeof text !== 'string') return res.status(400).json({ error: 'no text' });
 
-    const system = '你是一個嚴格的翻譯器。將輸入完整翻成繁體中文。只做直譯，不補充、不延伸、不省略、不加入任何註解或前後綴。專有名詞如 RF、GPS、VSWR、PLL 保留原文。只輸出翻譯結果。';
+    const system = '你是一個專業技術翻譯器。請將輸入完整翻譯成繁體中文，所有英文字都必須翻譯成中文，包括告警名稱、錯誤訊息、技術詞與動作詞（例如：RESET NOTIFICATION、download failed、unit reset、software download、authentication failed 等）。除特定專有名詞（RF、GPS、VSWR、PLL、FPGA、BTS 等）外，所有英文字詞不得保留英文，必須譯為中文。不要省略、不要新增內容，不要保留英文字。只做直譯，不加註解、不加前後綴。只輸出翻譯結果。';
 
     const apiKey = process.env.LLM_API_KEY;
     if (!apiKey) return res.status(500).json({ error: 'missing LLM_API_KEY' });
